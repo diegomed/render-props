@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-function App() {
+function SuperButton({ buttonText }) {
+  function doSomething() {
+    console.log('hello coders!');
+  }
+  return <button type='button' onClick={doSomething}>{ buttonText }</button>
+}
+
+function SuperForm(props) {
+  console.log(props);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>{props.title}</h1>
+      {props.boton({ buttonText: 'SuperForm Button' })}
+    </>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <SuperForm title='Hey!' boton={SuperButton} />
+  );
+}
